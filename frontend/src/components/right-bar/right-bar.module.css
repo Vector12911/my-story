@@ -1,0 +1,11 @@
+.right_bar{
+    position: fixed;
+    width: 300px;
+    background-color: rgb(81, 148, 243,0.7);
+    font-size: 21px;
+    overflow-y: scroll;
+    top: 61px;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+}

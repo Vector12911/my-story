@@ -1,0 +1,40 @@
+.not_found_container{
+    /* background-color: blue; */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -50px;
+}
+.not_found{
+    /* background-color: gray; */
+    width: 500px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;color: red;
+}
+.not_found h1{
+    margin-top: 10px;
+}
+.not_found p{
+    font-size: 30px;
+}
+.not_found button a{
+    padding: 20px 6px;
+    color: black;
+    color: white;
+}
+.not_found button{
+    margin-top: 10px;
+    padding: 6px 10px;
+    background-color: rgb(81, 148, 243,0.9);
+    border-radius: 6px;
+    border: none;
+    font-size: medium;
+    
+}
+.not_found button:hover{
+    background-color: rgb(81, 148, 243);
+}

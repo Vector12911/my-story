@@ -1,0 +1,86 @@
+/* .left_bar {
+    position: fixed;
+    width: 300px;
+    font-size: 16px;
+    overflow-y: scroll;
+    top: 61px;
+    bottom: 0;
+    text-align: center;
+}
+
+.left_item {
+    display: block;
+    color: white;
+    background-color: black;
+}
+
+.profile_img img {
+    border-radius: 50%;
+}
+
+.profile_img {
+    margin-top: 50px;
+}
+
+.follow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+}
+
+.follow_items {
+    border: none;
+    width: 110px;
+    background-color: white;
+    margin: 10px;
+    padding: 7px 15px;
+    border-radius: 6px;
+}
+
+.follow_items:hover {
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.side-bar{
+}
+.list-items{
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-items i{
+    margin-right: 15px;
+    margin-left: -10px;
+}
+
+.list-items .fas{
+    color: rgb(99,93,255);
+}
+.fas:hover{
+    color: rgb(212,210,255);
+}
+.list-items:hover{
+    color: rgb(99,93,255);
+    cursor: pointer;
+} */
