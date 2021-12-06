@@ -4,8 +4,11 @@ import moment from 'moment';
 import swal from 'sweetalert';
 import cogoToast from 'cogo-toast';
 import { auth } from "../firebase-config";
+import { fir } from "../firebase-config";
 import { onAuthStateChanged } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
+import {ref, child, get } from "firebase/database";
+// import { getDatabase, ref, child, get } from "firebase/database";
+// import {getDatabase} from "firebase/app"
 const Dashboard = () => {
 
 
@@ -28,15 +31,15 @@ const Dashboard = () => {
     })
 
 
-    const commentSend = async (e,id) => {
+    const commentSend = async (e, id) => {
         e.preventDefault();
 
         const res = await fetch(
             "https://writeyourownstory-a477d-default-rtdb.firebaseio.com/userComments.json",
             {
-                method : "POST",
-                headers:{
-                    "Content-Type" : "application/json"
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
                     "story_id": id,
@@ -45,31 +48,31 @@ const Dashboard = () => {
             }
         )
 
-        if(res){
+        if (res) {
             cogoToast.success('comment sent!');
             setComment("");
         }
-        else{
+        else {
             alert("error..")
         }
         // TODO TASK 
         // const getRes = await this.http.get("https://writeyourownstory-a477d-default-rtdb.firebaseio.com/userComments.json"+id)
-        // const getRes = await fetch(
-        //     "https://writeyourownstory-a477d-default-rtdb.firebaseio.com/userComments.json"+id,
-        //     {
-        //         method : "GET",
-        //         headers:{
-        //             "Content-Type" : "application/json"
-        //         },
-        //     }
-        // )
-        // if(getRes){
-        //     cogoToast.success('get success!');
-        //     console.log(getRes);
-        // }
-        // else{
-        //     alert("get error..");
-        // }
+        const getRes = await fetch(
+            "https://writeyourownstory-a477d-default-rtdb.firebaseio.com/userComments.json",
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            }
+        )
+        if (getRes) {
+            cogoToast.success('get success!');
+            console.log(getRes);
+        }
+        else {
+            alert("get error..");
+        }
 
         // axios.post('http://localhost:5000/comment', body)
         //     .then(function (response) {
@@ -110,6 +113,29 @@ const Dashboard = () => {
                 });
         }
         user && getallStory();
+
+    }, [user]);
+    useEffect(() => {
+        async function getallComments() {
+            // var firebaseRef = fir.ref("userComments");
+            // firebaseRef.on("value", function (snapshot) {
+            //     var data = snapshot.val();
+            //     console.log(data);
+            // })
+
+            // const dbRef = ref(db());
+            // get(child(dbRef,`users/${user.uid}`)).then((snapshot) => {
+            //     console.log(snapshot);
+            //     if (snapshot.exists()) {
+            //         console.log(snapshot.val());
+            //     } else {
+            //         console.log("No data available");
+            //     }
+            // }).catch((error) => {
+            //     console.error(error);
+            // });
+        }
+        user && getallComments();
 
     }, [user]);
 
@@ -236,7 +262,7 @@ const Dashboard = () => {
                                                                 </span>
                                                             </div>
                                                             <div class="d-flex flex-column flex-grow-1">
-                                                                <a href="#" class="text-dark-75 text-hover-primary mb-1 font-size-lg font-weight-bolder">Anjali Sharma</a>
+                                                                <a href="#" class="text-dark-75 text-hover-primary mb-1 font-size-lg font-weight-bolder">Amrit Sharma</a>
                                                                 <span class="text-muted font-weight-bold">{moment(obj.time).startOf('day').fromNow()}</span>
                                                             </div>
                                                         </div>
@@ -325,7 +351,7 @@ const Dashboard = () => {
                                                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="comment.." value={comment} onChange={(e) => setComment(e.target.value)}></textarea>
                                                             </div>
                                                             <p className="d-flex justify-content-end">
-                                                                <button class="btn btn-sm btn-light-primary font-weight-bolder" onClick={(e) => commentSend(e,obj.story_id)}>comment</button>
+                                                                <button class="btn btn-sm btn-light-primary font-weight-bolder" onClick={(e) => commentSend(e, obj.story_id)}>comment</button>
                                                             </p>
                                                         </form>
                                                     </div>

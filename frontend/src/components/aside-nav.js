@@ -224,17 +224,7 @@ const AsideNav = () => {
 													</ul>
 												</div>
 											</li>
-											<li class="menu-item" aria-haspopup="true">
-												<a href="custom/apps/inbox.html" class="menu-link">
-													<i class="menu-bullet menu-bullet-line">
-														<span></span>
-													</i>
-													<span class="menu-text">Inbox</span>
-													<span class="menu-label">
-														<span class="label label-danger label-inline">new</span>
-													</span>
-												</a>
-											</li>
+											
 										</ul>
 									</div>
 								</li>

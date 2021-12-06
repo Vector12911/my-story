@@ -3,6 +3,7 @@ import axios from 'axios';
 import { signOut, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase-config";
 import swal from 'sweetalert';
+import cogoToast from 'cogo-toast';
 import { Redirect,Route} from "react-router-dom";
 import { Link, NavLink } from 'react-router-dom';
 
@@ -28,10 +29,8 @@ const Login = () => {
         try {
             const user = await signInWithEmailAndPassword(auth, email, password);
             console.log(user);
-            swal("Hurrayy!", "you are logged in", "success")
-                .then(() => {
-                    window.location='/';
-                });
+            cogoToast.success('successfully logedin!');
+            window.location='/';
         } catch (error) {
             console.log(error);
         }
