@@ -1,0 +1,5 @@
+chat - folder
+contacts -folder
+projects - folder
+todo - folder
+inbox
