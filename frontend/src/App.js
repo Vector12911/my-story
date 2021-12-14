@@ -10,6 +10,7 @@ import AsideNav from './components/aside-nav';
 import Profile from './components/profile';
 import AddStory from './components/add-story';
 import News from './components/news';
+import Test from './components/test';
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
           <Route exact path={"/login"} component={Login} />
           <Route exact path={"/register"} component={Registration} />
           <Route exact from="/not-found" component={NotFound} />
+          <Route exact from="/test" component={Test} />
           <Route component={DefaultContainer} />
         </Switch>
       </div>

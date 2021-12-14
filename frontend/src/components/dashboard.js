@@ -4,10 +4,9 @@ import moment from 'moment';
 import swal from 'sweetalert';
 import cogoToast from 'cogo-toast';
 import { auth } from "../firebase-config";
-import { fir } from "../firebase-config";
+import { db } from "../firebase-config";
 import { onAuthStateChanged } from "firebase/auth";
-import {ref, child, get } from "firebase/database";
-// import { getDatabase, ref, child, get } from "firebase/database";
+import { getDatabase, ref, child, get } from "firebase/database";
 // import {getDatabase} from "firebase/app"
 const Dashboard = () => {
 
@@ -55,39 +54,7 @@ const Dashboard = () => {
         else {
             alert("error..")
         }
-        // TODO TASK 
-        // const getRes = await this.http.get("https://writeyourownstory-a477d-default-rtdb.firebaseio.com/userComments.json"+id)
-        const getRes = await fetch(
-            "https://writeyourownstory-a477d-default-rtdb.firebaseio.com/userComments.json",
-            {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-            }
-        )
-        if (getRes) {
-            cogoToast.success('get success!');
-            console.log(getRes);
-        }
-        else {
-            alert("get error..");
-        }
 
-        // axios.post('http://localhost:5000/comment', body)
-        //     .then(function (response) {
-        //         console.log(response);
-        //         if (response.data.operation == "success") {
-        //             swal("Hurrayy!", "Your Story Submitted", "success");
-        //         }
-        //         else {
-        //             swal("Opps!", "Something Wrong", "error");
-        //         }
-
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     });
     }
 
     useEffect(() => {
@@ -117,14 +84,9 @@ const Dashboard = () => {
     }, [user]);
     useEffect(() => {
         async function getallComments() {
-            // var firebaseRef = fir.ref("userComments");
-            // firebaseRef.on("value", function (snapshot) {
-            //     var data = snapshot.val();
-            //     console.log(data);
-            // })
 
-            // const dbRef = ref(db());
-            // get(child(dbRef,`users/${user.uid}`)).then((snapshot) => {
+            // const dbRef = ref(getDatabase());
+            // get(child(dbRef, `Users/${user.uid}`)).then((snapshot) => {
             //     console.log(snapshot);
             //     if (snapshot.exists()) {
             //         console.log(snapshot.val());
@@ -134,8 +96,21 @@ const Dashboard = () => {
             // }).catch((error) => {
             //     console.error(error);
             // });
+            const getRes = await fetch(
+                `https://writeyourownstory-a477d-default-rtdb.firebaseio.com/userComments/${user.uid}`,
+                {
+                    "origin": ["http://localhost:3000/"],
+                    method: "GET",
+                    mode: 'cors',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                }
+                ).then(response => {console.log(response)})
+                .then(data => console.log(data));
+
         }
-        user && getallComments();
+        // user && getallComments();
 
     }, [user]);
 

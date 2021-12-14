@@ -3,3 +3,5 @@ contacts -folder
 projects - folder
 todo - folder
 inbox
+profile - folder
+user - folder

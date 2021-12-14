@@ -57,6 +57,7 @@ const Login = () => {
                                 />
                                 <span id="email_chk"></span>
                             </div>
+                            
                             <div class="form-group">
                                 <label>Password</label>
                                 <input type="password" class="form-control" placeholder="Password.."
