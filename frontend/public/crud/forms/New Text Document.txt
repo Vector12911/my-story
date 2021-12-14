@@ -1,3 +1,5 @@
 widgets - folder
 editors - folder
 controls - folder
+layouts - folder
+validation - folder
